@@ -7,14 +7,12 @@ public class Snake extends GameEngine {
         createGame(new Snake());
     }
 
-
     class Point {
         private int x, y;
         public Point(int x, int y){
             this.x = x;
             this.y = y;
         }
-
         void setPoint(int x, int y){
             this.x = x;
             this.y = y;
@@ -31,15 +29,12 @@ public class Snake extends GameEngine {
         int getY(){
             return y;
         }
-        //boolean isHead;
     }
 
     boolean gameOver;
     boolean[][] grid = new boolean[50][50];
-    //boolean up, down, left, right;
     int direction;  //up,down,left,right  0,1,2,3
     ArrayList<Point> body = new ArrayList<>();
-    //boolean appleExist, eatApple;
     int applePointX, applePointY;
 
     Image apple = loadImage("resources/apple.png");
@@ -51,9 +46,8 @@ public class Snake extends GameEngine {
             applePointX = rand(50);
             applePointY = rand(50);
         }while (grid[applePointX][applePointY]);
-        //appleExist = true;
-
     }
+
 
     public void init(){
         gameOver = false;
@@ -71,14 +65,11 @@ public class Snake extends GameEngine {
         grid[25][26]=true;
         grid[25][27]=true;
 
-        //eatApple = false;
-        //appleExist = false;
         randomApple();
         direction = 0;
-
-
-
     }
+
+
     public void drawMap(){
         changeColor(white);
         for(int i=0; i<= 50; i++){
@@ -86,7 +77,6 @@ public class Snake extends GameEngine {
             drawLine(i*10,0,i*10,500,0.05);
         }
     }
-
 
 
     public void upDataSnake(){
@@ -124,7 +114,6 @@ public class Snake extends GameEngine {
         body.addFirst(temp);
         temp.take();
 
-
         if (eatApple) {
             randomApple();
             if (body.size() > 20) {
@@ -135,17 +124,17 @@ public class Snake extends GameEngine {
         } else {
             body.removeLast();
         }
-
     }
+
 
     public void drawSnake(){
         drawImage(head, body.getFirst().getX() * 10, body.getFirst().getY() * 10, 9, 9);
-
         for (int i = 1; i < body.size(); i++) {
             Point point = body.get(i);
             drawImage(dot, point.getX() * 10, point.getY() * 10, 9, 9);
         }
     }
+
 
     public void drawApple(){
         drawImage(apple,applePointX*10+0.5,applePointY*10+0.5,9,9);
@@ -177,7 +166,6 @@ public class Snake extends GameEngine {
                 timer = 0;
             }
         }
-
     }
 
     @Override
@@ -192,6 +180,5 @@ public class Snake extends GameEngine {
             changeColor(white);
             drawText(85, 250, "GAME OVER!", "Arial", 50);
         }
-
     }
 }
