@@ -15,13 +15,19 @@ This version of the game also includes additional features such as multiple appl
 2. How to Run the Program
 ----------------------------------------
 1. Open the project in IntelliJ IDEA (or any Java IDE).
-2. Make sure all resource images are located in the "resources" folder:
+
+2. Make sure you are using a recent JDK version (Java 21 or above is recommended),
+   as the program uses newer ArrayList methods that require a modern Java version.
+
+3. Make sure all resource images are located in the "resources" folder:
    - apple.png
    - badapple.png
    - head.png
    - dot.png
-3. Run the Snake.java file.
-4. The game window will appear with a start menu.
+
+4. Run the Snake.java file.
+
+5. The game window will appear with a start menu.
 
 ----------------------------------------
 3. Controls
