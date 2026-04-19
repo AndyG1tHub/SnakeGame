@@ -36,10 +36,10 @@ public class Snake extends GameEngine {
 
     boolean gameOver;
     boolean[][] grid = new boolean[50][50];
-    boolean up, down, left, right;
+    //boolean up, down, left, right;
     int direction;  //up,down,left,right  0,1,2,3
     ArrayList<Point> body = new ArrayList<>();
-    boolean appleExist, eatApple;
+    //boolean appleExist, eatApple;
     int applePointX, applePointY;
 
     Image apple = loadImage("resources/apple.png");
@@ -51,20 +51,28 @@ public class Snake extends GameEngine {
             applePointX = rand(50);
             applePointY = rand(50);
         }while (grid[applePointX][applePointY]);
-        appleExist = true;
+        //appleExist = true;
 
     }
 
     public void init(){
         gameOver = false;
+        body.clear();
+        for (int i = 0; i < 50; i++) {
+            for (int j = 0; j < 50; j++) {
+                grid[i][j] = false;
+            }
+        }
+
         body.add(new Point(25, 25));
         body.add(new Point(25, 26));
         body.add(new Point(25, 27));
         grid[25][25]=true;
         grid[25][26]=true;
         grid[25][27]=true;
-        eatApple = false;
-        appleExist = false;
+
+        //eatApple = false;
+        //appleExist = false;
         randomApple();
         direction = 0;
 
@@ -101,23 +109,33 @@ public class Snake extends GameEngine {
             gameOver = true;
             return;
         }
+
+        boolean eatApple = (temp.getX() == applePointX && temp.getY() == applePointY);
+        //release first
+        if (!eatApple) {
+            Point tail = body.getLast();
+            tail.release();
+        }
+        if (grid[temp.getX()][temp.getY()]) {
+            gameOver = true;
+            return;
+        }
+
         body.addFirst(temp);
         temp.take();
 
-        if(temp.getX() == applePointX && temp.getY() == applePointY) {
+
+        if (eatApple) {
             randomApple();
-            if(body.size() == 20) {
-                body.getLast().release();
+            if (body.size() > 20) {
+                Point tail = body.getLast();
+                tail.release();
                 body.removeLast();
             }
-        }
-        else {
-            body.getLast().release();
+        } else {
             body.removeLast();
         }
-        if(grid[temp.getX()][temp.getY()]){
-            gameOver = true;
-        }
+
     }
 
     public void drawSnake(){
@@ -152,11 +170,14 @@ public class Snake extends GameEngine {
     double moveDelay = 0.2;
     @Override
     public void update(double dt) {
-        timer += dt;
-        if (timer >= moveDelay) {
-            upDataSnake();
-            timer = 0;
+        if(!gameOver){
+            timer += dt;
+            if (timer >= moveDelay) {
+                upDataSnake();
+                timer = 0;
+            }
         }
+
     }
 
     @Override
