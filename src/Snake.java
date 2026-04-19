@@ -108,10 +108,19 @@ public class Snake extends GameEngine {
         body.addFirst(temp);
         temp.take();
 
-        if(!(eatApple && body.size() < 22)){
-            body.removeLast();
-            body.getLast().release();
+        if(temp.getX() == applePointX && temp.getY() == applePointY) {
+            randomApple();
+            if(body.size() == 20) {
+                body.getLast().release();
+                body.removeLast();
+            }
         }
+        else {
+            body.getLast().release();
+            body.removeLast();
+        }
+
+
 
 
     }
