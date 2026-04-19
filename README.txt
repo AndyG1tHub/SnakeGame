@@ -1,6 +1,6 @@
 Snake Game – Assignment 1
 Course: 159.261 Games Programming
-Language: Java
+Author：Mingqi Guo 24009196
 
 ----------------------------------------
 1. Project Description
@@ -73,23 +73,4 @@ Additional Features:
   → If the snake becomes too short, the game ends
 - Restart option after game over
 - Quit option from menu and game over screen
-
-----------------------------------------
-6. AI Usage Statement
-----------------------------------------
-This project was developed with assistance from ChatGPT (OpenAI).
-
-AI was used for:
-- Debugging and improving snake movement logic
-- Implementing additional features (menu system, multiple apples, bad apple)
-- Writing and refining the README documentation
-
-All code was reviewed, modified, and understood by the student before submission.
-
-----------------------------------------
-7. Author
-----------------------------------------
-Name: [Your Name]
-Student ID: [Your ID]
-
-----------------------------------------
+- Game Grid easier to see where the snake will move to
