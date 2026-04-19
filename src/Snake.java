@@ -101,10 +101,6 @@ public class Snake extends GameEngine {
             gameOver = true;
             return;
         }
-        if(grid[temp.getX()][temp.getY()]){
-            gameOver = true;
-            return;
-        }
         body.addFirst(temp);
         temp.take();
 
@@ -119,10 +115,9 @@ public class Snake extends GameEngine {
             body.getLast().release();
             body.removeLast();
         }
-
-
-
-
+        if(grid[temp.getX()][temp.getY()]){
+            gameOver = true;
+        }
     }
 
     public void drawSnake(){
