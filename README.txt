@@ -80,3 +80,4 @@ Additional Features:
 - Restart option after game over
 - Quit option from menu and game over screen
 - Game Grid easier to see where the snake will move to
+- Snake has four lives, the number is shown on upper left corner

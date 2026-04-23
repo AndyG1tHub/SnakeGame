@@ -1,7 +1,7 @@
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 public class Body {
-    private LinkedList<Point> body = new LinkedList<>();
+    private ArrayList<Point> body = new ArrayList<>();
     private boolean[][] grid;
     private int direction; // 0 up, 1 down, 2 left, 3 right
     private boolean gameOver;
@@ -32,15 +32,12 @@ public class Body {
         gameOver = false;
     }
 
-    public LinkedList<Point> getBody() {
+    public ArrayList<Point> getBody() {
         return body;
     }
 
-//    public int getDirection() {
-//        return direction;
-//    }
 
-    public boolean GameOver() {
+    public boolean isGameOver() {
         return gameOver;
     }
 
@@ -57,10 +54,18 @@ public class Body {
         int y = head.getY();
 
         switch (direction) {
-            case 0 -> y--;
-            case 1 -> y++;
-            case 2 -> x--;
-            case 3 -> x++;
+            case 0:
+                y--;
+                break;
+            case 1:
+                y++;
+                break;
+            case 2:
+                x--;
+                break;
+            case 3:
+                x++;
+                break;
         }
 
         return new Point(x, y);

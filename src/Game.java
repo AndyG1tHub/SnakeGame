@@ -61,7 +61,7 @@ public class Game extends GameEngine {
         }
     }
 
-    public Food FoodAt(int x, int y) {
+    public Food foodAt(int x, int y) {
         for (Food food : foods) {
             if (food.isAt(x, y)) {
                 return food;
@@ -73,12 +73,12 @@ public class Game extends GameEngine {
     public void updateSnake() {
         Point next = snake.getNextHead();
 
-        Food eatenFood = FoodAt(next.getX(), next.getY());
+        Food eatenFood = foodAt(next.getX(), next.getY());
         boolean grow = eatenFood != null && !eatenFood.isBad();
 
         snake.move(grow);
 
-        if (snake.GameOver()) {
+        if (snake.isGameOver()) {
             lives--;
 
             if (lives > 0) {
@@ -96,7 +96,7 @@ public class Game extends GameEngine {
             if (eatenFood.isBad()) {
                 snake.shorten();
 
-                if (snake.GameOver()) {
+                if (snake.isGameOver()) {
                     lives--;
 
                     if (lives > 0) {
