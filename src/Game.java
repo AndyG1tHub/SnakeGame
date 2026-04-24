@@ -150,8 +150,8 @@ public class Game extends GameEngine {
         drawText(60, 190, "Green apple: Grow longer", "Arial", 20);
         drawText(60, 230, "Blue apple: Be shortened", "Arial", 20);
         drawText(60, 270, "Do not hit the wall or yourself", "Arial", 20);
-        drawText(60, 350, "You have 4 lives before the game is over", "Arial", 20);
-        drawText(60, 310, "Press B to go back", "Arial", 20);
+        drawText(60, 310, "You have 4 lives before the game is over", "Arial", 20);
+        drawText(60, 350, "Press B to go back", "Arial", 20);
     }
 
     public void drawGameOver() {
